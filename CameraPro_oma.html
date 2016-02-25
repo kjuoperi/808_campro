@@ -8,6 +8,9 @@
 <link href="css/sytles.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
+
+
+
 function sendToServer(k, v) {		
 	var serverAddress = "http://" + $('#ip1').val() + ":" + $('#port').val() + "?k=" + k + "&v=" + v;
 	
@@ -18,7 +21,7 @@ function sendToServer(k, v) {
 
 function getCapturedImage()
 {	
-	var serverAddress = "http://" + $('#ip2').val() + ":" + $('#port').val() + "?k=" + 25 + "&v=" + 0;
+	var serverAddress = "http://" + $('#ip1').val() + ":" + $('#port').val() + "?k=" + 25 + "&v=" + 0;
 	window.location.href = serverAddress;
 }
 
@@ -94,11 +97,13 @@ function changeZoom()
   </table>
   <p>&nbsp;</p>
       <tr>
-      <td width="17%">Camera control set 1:</td>
-    
-      <td width="78%"><input type="button" onclick="sendToServer(24,52);sendToServer(37,100);" name="button" id="button" value="Capture" />
-          
-        </td>
+      <td width="17%">Camera (Nokia808 - 1) control set:</td>
+      <td width="78%"><input type="button" onclick="sendToServer(20,0);sendToServer(24,52);sendToServer(37,100);" name="button" id="button" value="Capture" /></td>
+      
+      
+      
+      
+      
     </tr>
   <p>&nbsp;</p>
   
