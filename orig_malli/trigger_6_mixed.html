@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CameraPro NET Edition Sample</title>
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+
+function capture()
+{
+	var k = 23;
+	var v = 0;
+	var vA = 'capture';
+	
+	var serverAddress1 = "http://" + $('#ip').val() + ":" + $('#port').val() + "?k=" + k + "&v=" + v;
+	var serverAddress2 = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + k + "&v=" + v;
+	
+	
+	var serverAddress3 = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + k + "&v=" + v;
+	var serverAddress4 = "http://" + $('#ip4').val() + ":" + $('#port4').val() + "?k=" + k + "&v=" + v;
+	
+	
+	var serverAddress5 = "http://" + $('#ip5').val() + ":" + $('#port5').val() + "?k=" + k + "&v=" + vA;
+	var serverAddress6 = "http://" + $('#ip6').val() + ":" + $('#port6').val() + "?k=" + k + "&v=" + vA;
+	
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress1 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress2 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+	
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress3 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+	
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress4 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+	
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress5 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+	
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress6 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+}
+
+</script>
+
+</head>
+
+<body>
+<h1>CameraPro NET Edition WiFi Sample Control (Control 6 phones at the same time)</h1>
+<form id="form1" name="form1" method="post" action="">
+  <table width="100%" border="1" cellspacing="1" cellpadding="1">
+    <tr>
+      <td width="20%" scope="col">Phone 1 IP (WP8 or Symbian):</td>
+      <td width="80%" scope="col"><label for="ip"></label>
+      <input name="ip" type="text" id="ip" value="192.168.3.10" /></td>
+    </tr>
+    <tr>
+      <td>Phone 1 port:</td>
+      <td><label for="port"></label>
+      <input name="port" type="text" id="port" value="30000" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td scope="col">Phone 2 IP (WP8 or Symbian):</td>
+      <td scope="col"><label for="ip2"></label>
+        <input name="ip2" type="text" id="ip2" value="192.168.3.11" /></td>
+    </tr>
+    <tr>
+      <td>Phone 2 port:</td>
+      <td><label for="port2"></label>
+        <input name="port2" type="text" id="port2" value="30000" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr><tr>
+      <td scope="col">Phone 3 IP (WP8 or Symbian):</td>
+      <td scope="col"><label for="ip3"></label>
+        <input name="ip3" type="text" id="ip3" value="192.168.3.9" /></td>
+    </tr>
+    <tr>
+      <td>Phone 3 port:</td>
+      <td><label for="port3"></label>
+        <input name="port3" type="text" id="port3" value="30000" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr><tr>
+      <td scope="col">Phone 4 IP (WP8 or Symbian):</td>
+      <td scope="col"><label for="ip4"></label>
+        <input name="ip4" type="text" id="ip4" value="192.168.3.12" /></td>
+    </tr>
+    <tr>
+      <td>Phone 4 port:</td>
+      <td><label for="port4"></label>
+        <input name="port4" type="text" id="port4" value="30000" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr><tr>
+      <td scope="col">Phone 5 IP Android:</td>
+      <td scope="col"><label for="ip5"></label>
+        <input name="ip5" type="text" id="ip5" value="192.168.3.5" /></td>
+    </tr>
+    <tr>
+      <td>Phone 5 port:</td>
+      <td><label for="port5"></label>
+        <input name="port2" type="text" id="port5" value="30000" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr><tr>
+      <td scope="col">Phone 6 IP Android:</td>
+      <td scope="col"><label for="ip6"></label>
+        <input name="ip6" type="text" id="ip6" value="192.168.3.6" /></td>
+    </tr>
+    <tr>
+      <td>Phone 6 port:</td>
+      <td><label for="port6"></label>
+        <input name="port6" type="text" id="port6" value="30000" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="button" onclick="capture();" name="button" id="button" value="Capture" /></td>
+    </tr>
+  </table>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>
