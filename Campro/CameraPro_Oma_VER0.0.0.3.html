@@ -1,5 +1,5 @@
 
-<!-- ver 004 -->
+<!-- ver 005 -->
 <!-- Control ON, Video, natural, sports, flash OFF, hyperfocal, iso 100, ndfilter on,  fluoresant  
 
 <td width="78%"><input type="button" onclick="
@@ -61,16 +61,21 @@ function videoteston()
 <!--  Videolight -->
 	var j = 29;
 	var r = 128;
-	
+<!--  	Start video  -->	
+	var l = 23;
+	var s = 0;
 	
 	var serverAddress1 = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + k + "&v=" + v;
 	var serverAddress1 = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + j + "&v=" + r;
+	var serverAddress1 = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + l + "&v=" + s;
 
 	var serverAddress2 = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + k + "&v=" + v;
 	var serverAddress2 = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + j + "&v=" + r;
+	var serverAddress2 = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + l + "&v=" + s;
 	
 	var serverAddress3 = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + k + "&v=" + v;
 	var serverAddress3 = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + j + "&v=" + r;
+	var serverAddress3 = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + l + "&v=" + s;
 
 
 
@@ -156,9 +161,21 @@ function videotestoff()
 
 
 
-function getCapturedImage()
+function getCapturedImage1()
 {	
 	var serverAddress = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + 25 + "&v=" + 0;
+	window.location.href = serverAddress;
+}
+
+function getCapturedImage2()
+{	
+	var serverAddress = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + 25 + "&v=" + 0;
+	window.location.href = serverAddress;
+}
+
+function getCapturedImage3()
+{	
+	var serverAddress = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + 25 + "&v=" + 0;
 	window.location.href = serverAddress;
 }
 
@@ -208,34 +225,43 @@ function changeZoom()
 </head>
 
 <body>
-<h1>CameraPro NET Edition (Symbian) WiFi Sample Control</h1>
+<h1>CameraPro NET Edition (Symbian/WP) Control over WiFi </h1>
 <form id="form1" name="form1" method="post" action="">
-  <table width="100%" border="1" cellspacing="1" cellpadding="1">
+  <table width="100%" border="1" cellspacing="1" cellpadding="1" >
     <tr>
-     <td width="8%" scope="col">Phone 1 IP:</td>
-     <td width="42%" scope="col"><label for="ip"></label> 
+     <td width="8%" scope="col"><img src="file:///C|/#DATA/Git_DW/Campro/Nokia808Red_tr.png" width="90" height="43" alt=""/> 1:</td>
+     <td width="13%" scope="col"><label for="ip1"></label> 
       	<input name="ip" type="text" id="ip1" value="192.168.255.14" />
 	    <input name="port" type="text" id="port1" value="3333" />
 	</td> 
-	<td width="50%"> 
-    	<input type="button" onclick="sendToServer(20,0);sendToServer(24,51);sendToServer(23,0);" name="button" id="button" value="Control ON, Take pic" />
-		<input type="button" onclick="getCapturedImage();" name="" id="" value="Get pic" />
-		<input type="button" onclick="videoteston();" name="button" id="button" value="Video light ON" />
-		<input type="button" onclick="videotestoff();" name="" id="" value="Video light Off" />
+	<td width="19%"> 
+    	<input type="button" onclick="sendToServer1(20,0);sendToServer1(24,51);sendToServer1(23,0);" name="button" id="button" value="Control ON, Take pic" />
+		<input type="button" onclick="getCapturedImage1();" name="" id="" value="Get pic" />
+		
+    <td width="60%" rowspan="3">   
+    <input type="button" onclick="videoteston();" name="button" id="button" value="Video REC with light ON" />
+	<input type="button" onclick="videotestoff();" name="" id="" value="Video REC Off" />
+     
     </tr>
     <tr>
-      <td width="8%" scope="col">Phone 2 IP:</td>
-          <td width="42%" scope="col"><label for="ip"></label> <input name="ip" type="text" id="ip2" value="192.168.255.7" />
+      <td width="8%" scope="col"><img src="file:///C|/#DATA/Git_DW/Campro/Nokia808Red_tr.png" width="90" height="43" alt=""/> 2:</td>
+          <td width="13%" scope="col"><label for="ip2"></label> <input name="ip" type="text" id="ip2" value="192.168.255.7" />
 
       <input name="port" type="text" id="port2" value="3333" /></td> 
-      <td width="50%">
-      <input type="button" onclick="sendToServer(20,0);sendToServer(24,51);sendToServer(23,0);" name="button" id="button" value="Control ON, Take pic" /><input type="button" onclick="sendToServer(24,52);" name="button" id="button" value="Video" />
+      <td width="19%">
+        <input type="button" onclick="sendToServer2(20,0);sendToServer2(24,51);sendToServer2(23,0);" name="button" id="button" value="Control ON, Take pic" />
+        <input type="button" onclick="getCapturedImage2();" name="" id="" value="Get pic" />
 </td>
-      
-
     </tr>
-    
-    
+    <tr>
+      <td width="8%" scope="col"><img src="file:///C|/#DATA/Git_DW/Campro/Nokia808Black_tr.png" width="90" height="43" alt=""/> 3:</td>
+      <td width="13%" scope="col"><label for="ip3"></label> 
+        <input name="ip" type="text" id="ip3" value="192.168.255.15" />
+        <input name="port" type="text" id="port3" value="3333" />
+      </td> 
+      <td width="19%"> 
+        <input type="button" onclick="sendToServer3(20,0);sendToServer3(24,51);sendToServer3(23,0);" name="button" id="button" value="Control ON, Take pic" />
+    <input type="button" onclick="getCapturedImage3();" name="" id="" value="Get pic" />      </tr>
        
     
     
@@ -246,7 +272,7 @@ function changeZoom()
       <td width="78%"><input type="button" onclick="sendToServer(20,0);sendToServer(24,52);sendToServer(26,512);sendToServer(28,8);sendToServer(29,0);sendToServer(30,6);sendToServer(37,100);sendToServer(38,32);sendToServer(41,8);changeExposureCompensation(3);" name="button" id="button" value="Settings" /></td> 
       
       <td width="78%">
-           <td width="78%"><input type="button" onclick="sendToServer(23,0);" name="button" id="button" value="Record" /></td> 
+    <td width="78%"><input type="button" onclick="sendToServer(23,0);" name="button" id="button" value="Record" /></td> 
            <td width="78%"><input type="button" onclick="sendToServer(23,2);" name="button" id="button" value="Pause" /></td> 
 </tr>
   <p>&nbsp;</p>
