@@ -1,5 +1,5 @@
 
-<!-- ver 006 -->
+<!-- ver 007 -->
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,14 +11,23 @@
 <link href="file:///C|/%23PILVET/OneDrive/%23CAMERAPRO_Nokia808_ostokset/guidet/CameraPro_SampleWifiControl_v100/css/sytles.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
-
+  
 function sendToServer(k, v) {		
-	var serverAddress = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + k + "&v=" + v;
-	var serverAddress = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + k + "&v=" + v;
-	var serverAddress = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + k + "&v=" + v;
+	var serverAddress1 = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + k + "&v=" + v;
+	var serverAddress2 = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + k + "&v=" + v;
+	var serverAddress3 = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + k + "&v=" + v;
+
 	
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", serverAddress + "&t=" + Math.random(), true);
+	xmlhttp.open("GET", serverAddress1 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress2 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress3 + "&t=" + Math.random(), true);
 	xmlhttp.send();
 }
 
@@ -111,7 +120,7 @@ function videotestoff()
  
 	
 	
-	var serverAddress1 = "http://" + $('#ip').val() + ":" + $('#port').val() + "?k=" + k + "&v=" + v;
+	var serverAddress1 = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + k + "&v=" + v;
 	var serverAddress2 = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + k + "&v=" + v;
  
 	var serverAddress3 = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + k + "&v=" + v;
@@ -220,10 +229,10 @@ function changeZoom()
 <form id="form1" name="form1" method="post" action="">
 <table width="100%" border="1" cellspacing="1" cellpadding="1" >
 <tr>
-	<td width="8%" scope="col"><img src="file:///C|/%23DATA/Git_DW/Campro/pics/Nokia808Red_tr.png" width="90" height="43" alt=""/> 1:
+	<td width="8%" scope="col"><img src="./pics/Nokia808Red_tr.png" width="90" height="43" alt=""/> 1:
     </td>
     <td width="21%" scope="col"><label for="ip1"></label> 
-      	<input name="ip" type="text" id="ip1" value="192.168.255.14" />
+      	<input name="ip" type="text" id="ip1" value="192.168.255.15" />
 	    <input name="port" type="text" id="port1" value="3333" />
 	</td> 
 	<td width="15%"> 
@@ -274,7 +283,7 @@ changeExposureCompensation(3); EXPOSURE_COMP 12= 0 | 9= -1 | 6= -2 | 3= -3 | 0= 
 		<input type="button" onclick="sendToServer1(23,0);sendToServer2(23,0);sendToServer3(23,0);" name="button" id="button" value="REC/ STOP ALL" /> 
 	</td> </tr>  
 <tr>
-	<td width="8%" scope="col"><img src="file:///C|/#DATA/Git_DW/Campro/pics/Nokia808White_tr.png" width="90" height="43" alt=""/> 2:
+	<td width="8%" scope="col"><img src="./pics/Nokia808White_tr.png" width="90" height="43" alt=""/> 2:
     </td>
     <td width="21%" scope="col"><label for="ip2"></label> 
     	<input name="ip2" type="text" id="ip2" value="192.168.255.16" />
@@ -286,7 +295,7 @@ changeExposureCompensation(3); EXPOSURE_COMP 12= 0 | 9= -1 | 6= -2 | 3= -3 | 0= 
 	</td>
 </tr>
  <tr>
-    <td width="8%" scope="col"><img src="file:///C|/#DATA/Git_DW/Campro/pics/Nokia808Black_tr.png" width="90" height="43" alt=""/> 3:
+    <td width="8%" scope="col"><img src="./pics/Nokia808Black_tr.png" width="90" height="43" alt=""/> 3:
     </td>
     <td width="21%" scope="col"><label for="ip3"></label> 
         <input name="ip3" type="text" id="ip3" value="192.168.255.19" />
@@ -374,10 +383,11 @@ changeExposureCompensation(3); EXPOSURE_COMP 12= 0 | 9= -1 | 6= -2 | 3= -3 | 0= 
         </td>
     </tr>
      -->
-    
-    
-    
-  
 </form>
+
+
+
+
+
 </body>
 </html>
