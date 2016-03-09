@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CameraPro NET Edition Sample</title>
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+
+function capture()
+{
+	var k = 23;
+	var v = 'capture';
+	
+	var serverAddress1 = "http://" + $('#ip').val() + ":" + $('#port').val() + "?k=" + k + "&v=" + v;
+	var serverAddress2 = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + k + "&v=" + v;
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress1 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress2 + "&t=" + Math.random(), true);
+	xmlhttp.send();
+}
+
+</script>
+
+</head>
+
+<body>
+<h1>CameraPro NET Edition WiFi Sample Control (Control 2 phones at the same time)</h1>
+<form id="form1" name="form1" method="post" action="">
+  <table width="100%" border="1" cellspacing="1" cellpadding="1">
+    <tr>
+      <td width="20%" scope="col">Phone 1 IP:</td>
+      <td width="80%" scope="col"><label for="ip"></label>
+      <input name="ip" type="text" id="ip" value="192.168.3.5" /></td>
+    </tr>
+    <tr>
+      <td>Phone 1 port:</td>
+      <td><label for="port"></label>
+      <input name="port" type="text" id="port" value="30000" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td scope="col">Phone 2 IP:</td>
+      <td scope="col"><label for="ip2"></label>
+        <input name="ip2" type="text" id="ip2" value="192.168.3.7" /></td>
+    </tr>
+    <tr>
+      <td>Phone 2 port:</td>
+      <td><label for="port2"></label>
+        <input name="port2" type="text" id="port2" value="30000" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="button" onclick="capture();" name="button" id="button" value="Capture" /></td>
+    </tr>
+  </table>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>
