@@ -1,24 +1,6 @@
 
-<!-- ver 005 -->
-<!-- Control ON, Video, natural, sports, flash OFF, hyperfocal, iso 100, ndfilter on,  fluoresant  
-
-<td width="78%"><input type="button" onclick="
-sendToServer(20,0);
-sendToServer(24,52);
-sendToServer(26,512);
-sendToServer(28,8);
-sendToServer(29,0);
-sendToServer(30,6);
-sendToServer(37,100);
-sendToServer(38,32);
-sendToServer(41,8);
-
-
-
-
-" name="button" id="button" value="Capture" /></td>
-
--->
+<!-- ver 006 -->
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -30,6 +12,15 @@ sendToServer(41,8);
 
 <script type="text/javascript">
 
+function sendToServer(k, v) {		
+	var serverAddress = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + k + "&v=" + v;
+	var serverAddress = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + k + "&v=" + v;
+	var serverAddress = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + k + "&v=" + v;
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress + "&t=" + Math.random(), true);
+	xmlhttp.send();
+}
 
 function sendToServer1(k, v) {		
 	var serverAddress = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + k + "&v=" + v;
@@ -227,61 +218,91 @@ function changeZoom()
 <body>
 <h1>CameraPro NET Edition (Symbian/WP) Control over WiFi </h1>
 <form id="form1" name="form1" method="post" action="">
-  <table width="100%" border="1" cellspacing="1" cellpadding="1" >
-    <tr>
-     <td width="8%" scope="col"><img src="file:///C|/%23DATA/Git_DW/Campro/pics/Nokia808Red_tr.png" width="90" height="43" alt=""/> 1:</td>
-     <td width="29%" scope="col"><label for="ip1"></label> 
+<table width="100%" border="1" cellspacing="1" cellpadding="1" >
+<tr>
+	<td width="8%" scope="col"><img src="file:///C|/%23DATA/Git_DW/Campro/pics/Nokia808Red_tr.png" width="90" height="43" alt=""/> 1:
+    </td>
+    <td width="21%" scope="col"><label for="ip1"></label> 
       	<input name="ip" type="text" id="ip1" value="192.168.255.14" />
 	    <input name="port" type="text" id="port1" value="3333" />
 	</td> 
-	<td width="17%"> 
+	<td width="15%"> 
     	<input type="button" onclick="sendToServer1(20,0);sendToServer1(24,51);sendToServer1(23,0);" name="button" id="button" value="Control ON, Take pic" />
 		<input type="button" onclick="getCapturedImage1();" name="" id="" value="Get pic" />
-		
-    <td width="46%" rowspan="3">   
-      <p>
+	</td>	
+	<td width="56%" rowspan="3">   
         <input type="button" onclick="videoteston();" name="button" id="button" value="Video REC with light ON" />
         <input type="button" onclick="videotestoff();" name="" id="" value="Video REC Off" />
-        
-        <!-- Control ON, Video, natural, sports, flash OFF, hyperfocal, iso 100, ndfilter on,  fluoresant -->
-    <p></p>
-    Control ON, Video, natural, sports, flash OFF, 
-    hyperfocal, iso 100, ndfilter on,  fluoresant
-     <p></p>
-       <input type="button" onclick="sendToServer(20,0);sendToServer(24,52);sendToServer(26,512);sendToServer(28,8);sendToServer(29,0);sendToServer(30,6);sendToServer(37,100);sendToServer(38,32);sendToServer(41,8);changeExposureCompensation(3);" name="button" id="button" value="Settings" />  
+<br />
+    KeepON, Video, natural, sports, flash OFF, 
+    hyperfocal, iso 100, ndfilter on,  fluoresant, Brightnes +45, EXP -3  
+<br />	
+		<input type="button" onclick="sendToServer(20,0);sendToServer(24,52);sendToServer(26,512);sendToServer(28,8);sendToServer(29,0);sendToServer(30,6);sendToServer(37,100);sendToServer(38,32);sendToServer(41,8);changeBrightness(45);changeContrast(0);changeSaturation(0);changeSharpness(0);changeExposureCompensation(3);" name="button" id="button" value="Settings" />  
+<!--  
+sendToServer(20,0); 
+sendToServer(24,52); 
+sendToServer(26,512); 
+sendToServer(28,8);
+sendToServer(29,0);
+sendToServer(30,6);
+sendToServer(37,100);
+sendToServer(38,32);
+sendToServer(41,8);
+changeBrightness(45);
+changeContrast(0);
+changeSaturation(0);
+changeSharpness(0);
+changeExposureCompensation(3);
 
-     <input type="button" onclick="sendToServer1(23,0);sendToServer2(23,0);sendToServer3(23,0);" name="button" id="button" value="REC/ STOP ALL" /> 
-       
-        
-        
-     </tr>
-    <tr>
-      <td width="8%" scope="col"><img src="file:///C|/#DATA/Git_DW/Campro/pics/Nokia808White_tr.png" width="90" height="43" alt=""/> 2:</td>
-          <td width="29%" scope="col"><label for="ip2"></label> <input name="ip" type="text" id="ip2" value="192.168.255.7" />
 
-      <input name="port" type="text" id="port2" value="3333" /></td> 
-      <td width="17%">
+sendToServer(20,0);   COMMAND ON
+sendToServer(24,52);   CAMERA_MODE (51  Still images, 52  Video | 53  Time-lapse, 54  Self-timer, 55  Bracketing, 56  Anti-shake, 57  Burst )
+sendToServer(26,512);   EFFECT_MODE (0 none, 1  Negative, 2  Monochrome, 8  Sepia, 64  Vivid, 512  Natural)
+sendToServer(28,8);   EXP_MODE (0  Auto, 1  Night, 2  Backlight, 4  Center, 8  Sports, 16  Very long)
+sendToServer(29,0);   FLASH (0  Off, 1  Auto, 2  On, 8  Red eye reduction, 128  Video light / torch mode)
+sendToServer(30,6); FOCUS_MODE (0  Fixed, 1  Auto, 2  Macro, 3  Continuous, 4  Continuous Macro, 5  Infinity, 6  Hyperfocal)
+sendToServer(37,100); ISO ( 50, 100, 200, 400, 800, 1600)
+sendToServer(38,32); ND filter (0  None, 1  Auto, 2  Off, 32  On)
+sendToServer(41,8);  WB (0  Auto, 1  Sunlight, 2  Cloudy, 4  Tungsten, 8  Fluorescent)
+changeBrightness(45);  (-100 - +100)
+changeContrast(0);  (-100 - +100)
+changeSaturation(0);  (-100 - +100)
+changeSharpness(0);  (-100 - +100)
+changeExposureCompensation(3); EXPOSURE_COMP 12= 0 | 9= -1 | 6= -2 | 3= -3 | 0= -4
+
+-->
+		<input type="button" onclick="sendToServer1(23,0);sendToServer2(23,0);sendToServer3(23,0);" name="button" id="button" value="REC/ STOP ALL" /> 
+	</td> </tr>  
+<tr>
+	<td width="8%" scope="col"><img src="file:///C|/#DATA/Git_DW/Campro/pics/Nokia808White_tr.png" width="90" height="43" alt=""/> 2:
+    </td>
+    <td width="21%" scope="col"><label for="ip2"></label> 
+    	<input name="ip2" type="text" id="ip2" value="192.168.255.16" />
+		<input name="port2" type="text" id="port2" value="3333" />
+    </td> 
+	<td width="15%">
         <input type="button" onclick="sendToServer2(20,0);sendToServer2(24,51);sendToServer2(23,0);" name="button" id="button" value="Control ON, Take pic" />
         <input type="button" onclick="getCapturedImage2();" name="" id="" value="Get pic" />
-</td>
-    </tr>
-    <tr>
-      <td width="8%" scope="col"><img src="file:///C|/#DATA/Git_DW/Campro/pics/Nokia808Black_tr.png" width="90" height="43" alt=""/> 3:</td>
-      <td width="29%" scope="col"><label for="ip3"></label> 
-        <input name="ip" type="text" id="ip3" value="192.168.255.15" />
-        <input name="port" type="text" id="port3" value="3333" />
-      </td> 
-      <td width="17%"> 
-        <input type="button" onclick="sendToServer3(20,0);sendToServer3(24,51);sendToServer3(23,0);" name="button" id="button" value="Control ON, Take pic" />
-    <input type="button" onclick="getCapturedImage3();" name="" id="" value="Get pic" />      </tr>
+	</td>
+</tr>
+ <tr>
+    <td width="8%" scope="col"><img src="file:///C|/#DATA/Git_DW/Campro/pics/Nokia808Black_tr.png" width="90" height="43" alt=""/> 3:
+    </td>
+    <td width="21%" scope="col"><label for="ip3"></label> 
+        <input name="ip3" type="text" id="ip3" value="192.168.255.19" />
+        <input name="port3" type="text" id="port3" value="3333" />
+    </td> 
+    <td width="15%"> 
+    	<input type="button" onclick="sendToServer3(20,0);sendToServer3(24,51);sendToServer3(23,0);" name="button" id="button" value="Control ON, Take pic" />
+    	<input type="button" onclick="getCapturedImage3();" name="" id="" value="Get pic" />     
+ 	</td>
+ </tr>
        
     
-    
+  
   </table>
-<tr>
-    
-</tr>
-  <p>&nbsp;</p>
+ 
+ <!--   <p>&nbsp;</p>
   
   
   
@@ -352,12 +373,11 @@ function changeZoom()
       	<input type="button" onclick="changeZoom();" name="button" id="button" value="Change" />
         </td>
     </tr>
+     -->
     
     
     
-    
-      </table>
+  
 </form>
-<p>&nbsp;</p>
 </body>
 </html>
