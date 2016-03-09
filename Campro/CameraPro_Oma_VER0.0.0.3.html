@@ -1,5 +1,5 @@
 
-
+<!-- ver 004 -->
 <!-- Control ON, Video, natural, sports, flash OFF, hyperfocal, iso 100, ndfilter on,  fluoresant  
 
 <td width="78%"><input type="button" onclick="
@@ -25,27 +25,40 @@ sendToServer(41,8);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>CameraPro NET Edition Sample</title>
 
-<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-<link href="css/sytles.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="file:///C|/%23PILVET/OneDrive/%23CAMERAPRO_Nokia808_ostokset/guidet/CameraPro_SampleWifiControl_v100/js/jquery-1.10.2.min.js"></script>
+<link href="file:///C|/%23PILVET/OneDrive/%23CAMERAPRO_Nokia808_ostokset/guidet/CameraPro_SampleWifiControl_v100/css/sytles.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 
 
-
-function sendToServer(k, v) {		
+function sendToServer1(k, v) {		
 	var serverAddress = "http://" + $('#ip1').val() + ":" + $('#port1').val() + "?k=" + k + "&v=" + v;
 	
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", serverAddress + "&t=" + Math.random(), true);
 	xmlhttp.send();
 }
-
-
+function sendToServer2(k, v) {		
+	var serverAddress = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + k + "&v=" + v;
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress + "&t=" + Math.random(), true);
+	xmlhttp.send();
+}
+function sendToServer3(k, v) {		
+	var serverAddress = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + k + "&v=" + v;
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress + "&t=" + Math.random(), true);
+	xmlhttp.send();
+}
 
 function videoteston()
 {
+<!-- Videomode -->
 	var k = 24;
 	var v = 52;
+<!--  Videolight -->
 	var j = 29;
 	var r = 128;
 	
@@ -55,13 +68,14 @@ function videoteston()
 
 	var serverAddress2 = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + k + "&v=" + v;
 	var serverAddress2 = "http://" + $('#ip2').val() + ":" + $('#port2').val() + "?k=" + j + "&v=" + r;
-
-	
 	
 	var serverAddress3 = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + k + "&v=" + v;
+	var serverAddress3 = "http://" + $('#ip3').val() + ":" + $('#port3').val() + "?k=" + j + "&v=" + r;
+
+
+
+
 	var serverAddress4 = "http://" + $('#ip4').val() + ":" + $('#port4').val() + "?k=" + k + "&v=" + v;
-	
-	
 	var serverAddress3 = "http://" + $('#ip5').val() + ":" + $('#port5').val() + "?k=" + k + "&v=" + v;
 	var serverAddress4 = "http://" + $('#ip6').val() + ":" + $('#port6').val() + "?k=" + k + "&v=" + v;	
 	
@@ -216,8 +230,7 @@ function changeZoom()
       <input name="port" type="text" id="port2" value="3333" /></td> 
       <td width="50%">
       <input type="button" onclick="sendToServer(20,0);sendToServer(24,51);sendToServer(23,0);" name="button" id="button" value="Control ON, Take pic" /><input type="button" onclick="sendToServer(24,52);" name="button" id="button" value="Video" />
-      <input type="button" onclick="sendToServer(29,128);" name="" id="" value="Video light" />
-      <input type="button" onclick="sendToServer(29,0);" name="" id="" value="Video light Off" /></td>
+</td>
       
 
     </tr>
