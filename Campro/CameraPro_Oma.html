@@ -1,0 +1,215 @@
+
+
+<!-- Control ON, Video, natural, sports, flash OFF, hyperfocal, iso 100, ndfilter on,  fluoresant  
+
+<td width="78%"><input type="button" onclick="
+sendToServer(20,0);
+sendToServer(24,52);
+sendToServer(26,512);
+sendToServer(28,8);
+sendToServer(29,0);
+sendToServer(30,6);
+sendToServer(37,100);
+sendToServer(38,32);
+sendToServer(41,8);
+
+
+
+
+" name="button" id="button" value="Capture" /></td>
+
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CameraPro NET Edition Sample</title>
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<link href="css/sytles.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+
+
+
+function sendToServer(k, v) {		
+	var serverAddress = "http://" + $('#ip1').val() + ":" + $('#port').val() + "?k=" + k + "&v=" + v;
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress + "&t=" + Math.random(), true);
+	xmlhttp.send();
+}
+
+function getCapturedImage()
+{	
+	var serverAddress = "http://" + $('#ip1').val() + ":" + $('#port').val() + "?k=" + 25 + "&v=" + 0;
+	window.location.href = serverAddress;
+}
+
+function setFocusPosition()
+{
+	sendToServer(31, $('#focus_x').val());
+	sendToServer(32, $('#focus_y').val());
+}
+
+function changeExposureCompensation()
+{
+	sendToServer(27, $('#expcomp').val());
+}
+
+function changeBrightness()
+{
+	sendToServer(33, $('#brightness').val());
+}
+
+function changeSaturation()
+{
+	sendToServer(35, $('#saturation').val());
+}
+
+function changeContrast()
+{
+	sendToServer(34, $('#contrast').val());
+}
+
+function changeSharpness()
+{
+	sendToServer(36, $('#sharpness').val());
+}
+
+function changeResolution()
+{
+	sendToServer(39, $('#resolution').val());
+}
+
+function changeZoom()
+{
+	sendToServer(42, $('#zoom').val());
+}
+
+</script>
+
+</head>
+
+<body>
+<h1>CameraPro NET Edition (Symbian) WiFi Sample Control</h1>
+<form id="form1" name="form1" method="post" action="">
+  <table width="100%" border="1" cellspacing="1" cellpadding="1">
+    <tr>
+      <td width="20%" scope="col">Phone1 IP:</td>
+      <td width="80%" scope="col"><label for="ip"></label> <input name="ip" type="text" id="ip1" value="192.168.255.14" />
+
+      <input name="port" type="text" id="port" value="3333" />
+      <input type="button" onclick="sendToServer(20,0);sendToServer(24,51);sendToServer(23,0);" name="button" id="button" value="Control ON, Take pic" /></td> 
+      </td>
+    </tr>
+<!--    <tr>
+      <td width="20%" scope="col">Phone2 IP:</td>
+      <td width="80%" scope="col"><label for="ip"></label>
+      <input name="ip" type="text" id="ip2" value="192.168.137.17" /></td>
+      <td><label for="port"></label>
+      <input name="port" type="text" id="port" value="3333" /></td>
+    </tr>
+-->    
+    
+        <tr>
+        <td>Test connection starting and stopping video light</td>
+      <td>
+       <input type="button" onclick="sendToServer(24,52);" name="button" id="button" value="Video" />
+      <input type="button" onclick="sendToServer(29,128);" name="" id="" value="Video light" />
+      <input type="button" onclick="sendToServer(29,0);" name="" id="" value="Video light Off" />
+      </td>
+    </tr> 
+    
+    
+  </table>
+  <p>&nbsp;</p>
+      <tr>
+      <!-- Control ON, Video, natural, sports, flash OFF, hyperfocal, iso 100, ndfilter on,  fluoresant -->
+      <td width="17%">Camera (Nokia808 - 1) control set:</td>
+      <td width="78%"><input type="button" onclick="sendToServer(20,0);sendToServer(24,52);sendToServer(26,512);sendToServer(28,8);sendToServer(29,0);sendToServer(30,6);sendToServer(37,100);sendToServer(38,32);sendToServer(41,8);changeExposureCompensation(3);" name="button" id="button" value="Settings" /></td> 
+      
+      <td width="78%">
+           <td width="78%"><input type="button" onclick="sendToServer(23,0);" name="button" id="button" value="Record" /></td> 
+           <td width="78%"><input type="button" onclick="sendToServer(23,2);" name="button" id="button" value="Pause" /></td> 
+</tr>
+  <p>&nbsp;</p>
+  
+  
+  
+    <table width="100%" border="1" cellspacing="1" cellpadding="1">
+    <tr>
+      <th nowrap="nowrap">Command</th>
+      <th nowrap="nowrap">Key</th>
+      <th nowrap="nowrap">Value/Action</th>
+    </tr>
+<tr>
+      <td width="17%">Camera control:</td>
+      <td width="5%">23</td>
+      <td width="78%"><input type="button" onclick="sendToServer(23,0);" name="button" id="button" value="Capture" />
+         <input type="button" onclick="sendToServer(23,1);" name="button" id="button" value="Focus" />
+          <input type="button" onclick="sendToServer(23,2);" name="button" id="button" value="Pause" />
+        </td>
+    </tr>
+
+
+    <tr>
+      <td>Get captured image:</td>
+      <td>25</td>
+      <td><input type="button" onclick="getCapturedImage();" name="" id="" value="Get" /></td>
+    </tr>
+
+
+    <tr>
+      <td>Exposure compensation (-4):</td>
+      <td>27</td>
+      <td><input name="expcomp" type="text" id="expcomp" value="0" />
+      	<input type="button" onclick="changeExposureCompensation();" name="button" id="button" value="Change" /> 12= 0 | 9= -1 | 6= -2 | 3= -3 | 0= -4
+      </td>
+    </tr>
+    
+       <tr>
+      <td>Brightness:</td>
+      <td>33</td>
+      <td><input name="brightness" type="text" id="brightness" value="0" />
+      	<input type="button" onclick="changeBrightness();" name="button" id="button" value="Change" />
+        </td>
+    </tr>
+    <tr>
+      <td>Contrast:</td>
+      <td>34</td>
+      <td><input name="contrast" type="text" id="contrast" value="0" />
+      	<input type="button" onclick="changeContrast();" name="button" id="button" value="Change" />
+         </td>
+    </tr>
+    <tr>
+      <td>Saturation:</td>
+      <td>35</td>
+      <td><input name="saturation" type="text" id="saturation" value="0" />
+      	<input type="button" onclick="changeSaturation();" name="button" id="button" value="Change" />
+        </td>
+    </tr>
+    <tr>
+      <td>Sharpness:</td>
+      <td>36</td>
+      <td><input name="sharpness" type="text" id="sharpness" value="0" />
+      	<input type="button" onclick="changeSharpness();" name="button" id="button" value="Change" />
+        </td>
+    </tr>
+    
+       <tr>
+      <td>Zoom (index!):</td>
+      <td>42</td>
+      <td><input name="zoom" type="text" id="zoom" value="0" />
+      	<input type="button" onclick="changeZoom();" name="button" id="button" value="Change" />
+        </td>
+    </tr>
+    
+    
+    
+    
+      </table>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>

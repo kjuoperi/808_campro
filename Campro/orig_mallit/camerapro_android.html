@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CameraPro NET Edition Sample</title>
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<link href="css/sytles.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+function sendToServer(k, v) {		
+	var serverAddress = "http://" + $('#ip').val() + ":" + $('#port').val() + "?k=" + k + "&v=" + v;
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", serverAddress + "&t=" + Math.random(), true);
+	xmlhttp.send();
+}
+
+function getCapturedImage()
+{	
+	var serverAddress = "http://" + $('#ip').val() + ":" + $('#port').val() + "?k=" + 25 + "&v=" + 0;
+	window.location.href = serverAddress;
+}
+
+function setFocusPosition()
+{
+	sendToServer(31, $('#focus_x').val());
+	sendToServer(32, $('#focus_y').val());
+}
+
+function changeExposureCompensation()
+{
+	sendToServer(27, $('#expcomp').val());
+}
+
+function changeBrightness()
+{
+	sendToServer(33, $('#brightness').val());
+}
+
+function changeSaturation()
+{
+	sendToServer(35, $('#saturation').val());
+}
+
+function changeContrast()
+{
+	sendToServer(34, $('#contrast').val());
+}
+
+function changeSharpness()
+{
+	sendToServer(36, $('#sharpness').val());
+}
+
+function changeResolution()
+{
+	sendToServer(39, $('#resolution').val());
+}
+
+function changeZoom()
+{
+	sendToServer(42, $('#zoom').val());
+}
+
+</script>
+
+</head>
+
+<body>
+<h1>CameraPro NET Module (Android) WiFi Sample Control</h1>
+<form id="form1" name="form1" method="post" action="">
+  <table width="100%" border="1" cellspacing="1" cellpadding="1">
+    <tr>
+      <td width="20%" scope="col">Phone IP:</td>
+      <td width="80%" scope="col"><label for="ip"></label>
+      <input name="ip" type="text" id="ip" value="192.168.3.7" /></td>
+    </tr>
+    <tr>
+      <td>Phone port:</td>
+      <td><label for="port"></label>
+      <input name="port" type="text" id="port" value="30000" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+    <table width="100%" border="1" cellspacing="1" cellpadding="1">
+    <tr>
+      <th nowrap="nowrap">Command</th>
+      <th nowrap="nowrap">Key</th>
+      <th nowrap="nowrap">Value/Action</th>
+    </tr>
+    <tr>
+      <td width="17%">Camera control:</td>
+      <td width="5%">23</td>
+      <td width="78%">
+        <input type="button" onclick="sendToServer(23,'capture');" name="button" id="button" value="Capture" />
+         <input type="button" onclick="sendToServer(23,'focus');" name="button" id="button" value="Focus" />
+          <input type="button" onclick="sendToServer(23,'pause');" name="button" id="button" value="Pause" />
+        </td>
+    </tr>
+    <tr>
+      <td>Camera mode:</td>
+      <td>24</td>
+      <td><input type="button" onclick="sendToServer(24,'normal');" name="button" id="button" value="Still" />
+      <input type="button" onclick="sendToServer(24,'video');" name="button" id="button" value="Video" />
+      <input type="button" onclick="sendToServer(24,'timelapse');" name="button" id="button" value="Time-lapse" />
+      <input type="button" onclick="sendToServer(24,'selftimer');" name="button" id="button" value="Self-timer" />
+      <input type="button" onclick="sendToServer(24,'bracketing');" name="button" id="button" value="Bracketing" />
+      <input type="button" onclick="sendToServer(24,'antishake');" name="button" id="button" value="Anti-shake" />
+      <input type="button" onclick="sendToServer(24,'burst');" name="button" id="button" value="Burst" />
+      </td>
+    </tr>
+    <tr>
+      <td>Get captured image:</td>
+      <td>25</td>
+      <td><input type="button" onclick="getCapturedImage();" name="" id="" value="Get" /></td>
+    </tr>
+    <tr>
+      <td>AE Lock:</td>
+      <td>45</td>
+      <td><input type="button" onclick="sendToServer(45,'0');" name="input" id="input" value="Off (unlock)" />
+        <input type="button" onclick="sendToServer(45,'1');" name="input" id="input" value="On (lock)" /></td>
+    </tr>
+    <tr>
+      <td>Anti-banding:</td>
+      <td>43</td>
+      <td><input type="button" onclick="sendToServer(43,'50hz');" name="input" id="input" value="50 Hz" />
+        <input type="button" onclick="sendToServer(43,'60hz');" name="input" id="input" value="60 Hz" />
+        <input type="button" onclick="sendToServer(43,'auto');" name="input" id="input" value="Auto " />
+        <input type="button" onclick="sendToServer(43,'off');" name="input" id="input" value="Off" /></td>
+    </tr>
+    <tr>
+      <td>Effect mode:</td>
+      <td>26</td>
+      <td><input type="button" onclick="sendToServer(26,'none');" name="" id="" value="None" />
+      <input type="button" onclick="sendToServer(26,'negative');" name="" id="" value="Negative" />
+      <input type="button" onclick="sendToServer(26,'mono');" name="" id="" value="Monochrome" />
+      <input type="button" onclick="sendToServer(26,'sepia');" name="" id="" value="Sepia" />
+      </td>
+    </tr>
+    <tr>
+      <td>Exposure compensation:</td>
+      <td>27</td>
+      <td><input name="expcomp" type="text" id="expcomp" value="0" />
+      	<input type="button" onclick="changeExposureCompensation();" name="button" id="button" value="Change" />
+      </td>
+    </tr>
+    <tr>
+      <td>Flash mode:</td>
+      <td>29</td>
+      <td><input type="button" onclick="sendToServer(29,'off');" name="" id="" value="Off" />
+      <input type="button" onclick="sendToServer(29,'auto');" name="" id="" value="Auto" />
+      <input type="button" onclick="sendToServer(29,'on');" name="" id="" value="On" />
+      <input type="button" onclick="sendToServer(29,'red-eye');" name="" id="" value="Red eye" />
+      <input type="button" onclick="sendToServer(29,'torch');" name="" id="" value="Video light / Torch" />
+      </td>
+    </tr>
+    <tr>
+      <td>Focus mode:</td>
+      <td>30</td>
+      <td><input type="button" onclick="sendToServer(30,'fixed');" name="" id="" value="Fixed" />
+      <input type="button" onclick="sendToServer(30,'auto');" name="" id="" value="Auto" />
+      <input type="button" onclick="sendToServer(30,'macro');" value="Macro" />
+      <input type="button" onclick="sendToServer(30,'infinity');" name="" id="" value="Infinity" />
+      </td>
+    </tr>
+    <tr>
+      <td>Focus position:</td>
+      <td>31x32</td>
+      <td><label for="focus_x"></label>
+      <input name="focus_x" type="text" id="focus_x" value="100" />
+      x
+      <label for="focus_y"></label>
+      <input name="focus_y" type="text" id="focus_y" value="100" />
+      <input type="button" onclick="setFocusPosition();" name="focusposition" id="focusposition" value="Change" /></td>
+    </tr>
+    <tr>
+      <td>Metering mode:</td>
+      <td>44</td>
+      <td><input type="button" onclick="sendToServer(44,'center');" name="input" id="input" value="Center" />
+        <input type="button" onclick="sendToServer(44,'average');" name="input" id="input" value="Average" />
+        <input type="button" onclick="sendToServer(44,'spot');" name="input" id="input" value="Spot" />
+        <input type="button" onclick="sendToServer(44,'meter-center');" name="input" id="input" value="Center (2)" />
+        <input type="button" onclick="sendToServer(44,'meter-average');" name="input" id="input" value="Average (2)" />
+        <input type="button" onclick="sendToServer(44,'meter-spot');" name="input" id="input" value="Spot (2)" /></td>
+    </tr>
+    <tr>
+      <td>Brightness:</td>
+      <td>33</td>
+      <td><input name="brightness" type="text" id="brightness" value="0" />
+      	<input type="button" onclick="changeBrightness();" name="button" id="button" value="Change" />
+        </td>
+    </tr>
+    <tr>
+      <td>Contrast:</td>
+      <td>34</td>
+      <td><input name="contrast" type="text" id="contrast" value="0" />
+      	<input type="button" onclick="changeContrast();" name="button" id="button" value="Change" />
+         </td>
+    </tr>
+    <tr>
+      <td>Saturation:</td>
+      <td>35</td>
+      <td><input name="saturation" type="text" id="saturation" value="0" />
+      	<input type="button" onclick="changeSaturation();" name="button" id="button" value="Change" />
+        </td>
+    </tr>
+    <tr>
+      <td>Sharpness:</td>
+      <td>36</td>
+      <td><input name="sharpness" type="text" id="sharpness" value="0" />
+      	<input type="button" onclick="changeSharpness();" name="button" id="button" value="Change" />
+        </td>
+    </tr>
+    <tr>
+      <td>ISO:</td>
+      <td>37</td>
+      <td><input type="button" onclick="sendToServer(37,'auto');" name="" id="" value="Auto" />
+      <input type="button" onclick="sendToServer(37,'deblur');" name="" id="" value="Deblur" />
+      <input type="button" onclick="sendToServer(37,100);" name="" id="" value="100" />
+      <input type="button" onclick="sendToServer(37,200);" name="" id="" value="200" />
+      <input type="button" onclick="sendToServer(37,400);" name="" id="" value="400" />
+      <input type="button" onclick="sendToServer(37,800);" name="" id="" value="800" />
+      <input type="button" onclick="sendToServer(37,1250);" name="" id="" value="1250" />
+      </td>
+    </tr>
+    <tr>
+      <td>Resolution (index!):</td>
+      <td>39</td>
+      <td><input name="resolution" type="text" id="resolution" value="0" />
+      	<input type="button" onclick="changeResolution();" name="button" id="button" value="Change" />
+        </td>
+    </tr>
+    <tr>
+      <td>Scene mode:</td>
+      <td>38</td>
+      <td><input type="button" onclick="sendToServer(38,'auto');" name="button2" id="button2" value="Auto" />
+        <input type="button" onclick="sendToServer(38,'hdr');" name="button2" id="button2" value="HDR" />
+        <input type="button" onclick="sendToServer(38,&lt;br /&gt;
+sports');" name="button2" id="button2" value="Sports" /></td>
+    </tr>
+    <tr>
+      <td>Switch camera:</td>
+      <td>40</td>
+      <td><input type="button" onclick="sendToServer(40,'0');" name="button0" id="button1" value="Back" />
+      <input type="button" onclick="sendToServer(40,'1');" name="button1" id="" value="Front" /></td>
+    </tr>
+    <tr>
+      <td>White balance:</td>
+      <td>41</td>
+      <td><input type="button" onclick="sendToServer(41,'auto');" name="button" id="" value="Auto" />
+        <input type="button" onclick="sendToServer(41,'daylight');" name="button" id="" value="Daylight" />
+        <input type="button" onclick="sendToServer(41,'cloudy-daylight');" name="button" id="" value="Cloudy" />
+        <input type="button" onclick="sendToServer(41,'incandescent');" name="button" id="" value="Tungsten" />
+        <input type="button" onclick="sendToServer(41,'fluorescent');" name="button" id="" value="Fluorescent" /></td>
+    </tr>
+    <tr>
+      <td>Zoom (starting with 1):</td>
+      <td>42</td>
+      <td><input name="zoom" type="text" id="zoom" value="1" />
+      	<input type="button" onclick="changeZoom();" name="button" id="button" value="Change" />
+        </td>
+    </tr>
+  </table>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>
